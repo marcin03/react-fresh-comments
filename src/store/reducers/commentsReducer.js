@@ -26,6 +26,7 @@ const commentsReducer = (state = initialState, action) => {
         loadingComments: true,
         loadedCommentsSuccessfully: false,
         errorLoadingComments: false,
+        commentsList: action.payload.commentsList
       };
     case ERROR_GET_COMMENTS:
       return {
@@ -39,6 +40,6 @@ const commentsReducer = (state = initialState, action) => {
   }
 };
 
-export const selectAllComments = state => state.comments;
+export const selectAllComments = state => state.commentsList;
 
 export default commentsReducer;

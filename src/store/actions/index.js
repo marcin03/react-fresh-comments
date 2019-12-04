@@ -1,0 +1,1 @@
+export { getCommentsFromApi } from './commentsActions';
