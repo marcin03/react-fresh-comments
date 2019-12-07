@@ -2,11 +2,12 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getCommentsFromApi} from './../../store/actions';
 import {selectAllComments} from './../../store/reducers/commentsReducer';
+import {CommentsList} from './../CommentsList/CommentsList'
 
 const CommentsScreen = () => {
   const dispatch = useDispatch();
   const commentsList = useSelector(selectAllComments);
-  console.log("commentsList",commentsList)
+  console.log("commentsList", commentsList)
   useEffect(() => {
       dispatch(getCommentsFromApi())
       //console.log('mounted')
@@ -15,7 +16,7 @@ const CommentsScreen = () => {
     , []);
   return (
     <div className="commentsScreen">
-      Comments Screen Content
+      <CommentsList commentsList={commentsList}/>
     </div>
   );
 };
