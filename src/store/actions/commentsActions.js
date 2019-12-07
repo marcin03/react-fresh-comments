@@ -16,8 +16,8 @@ export const getCommentsFromApi = () => (dispatch => {
   )
     .then(response => response.json())
     .then(data => {
-      //console.log("data", data)
-      dispatch(responseGetCommentsFromApi(data));
+      let firstTwentyComments = data.slice(0, 20);
+      dispatch(responseGetCommentsFromApi(firstTwentyComments));
     })
     .catch(error => {
       dispatch(errorGetCommentsFromApi(error));
