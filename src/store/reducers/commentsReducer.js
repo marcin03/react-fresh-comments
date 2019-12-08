@@ -2,15 +2,16 @@ import {
   REQUEST_GET_COMMENTS,
   RESPONSE_GET_COMMENTS,
   ERROR_GET_COMMENTS,
-  SWITCH_IS_FAVOURITE
+  SWITCH_IS_FAVOURITE,
+  ADD_COMMENT
 } from '../actions/actionTypes.js';
-import { createSelector } from 'reselect'
+import {createSelector} from 'reselect'
 
 const initialState = {
   loadingComments: false,
   loadedCommentsSuccessfully: false,
   errorLoadingComments: false,
-  commentsList:[],
+  commentsList: [],
 };
 
 const commentsReducer = (state = initialState, action) => {
@@ -37,22 +38,33 @@ const commentsReducer = (state = initialState, action) => {
         loadedCommentsSuccessfully: false,
         errorLoadingComments: action.payload.error,
       };
-    case SWITCH_IS_FAVOURITE:{
-      const newCommentsList = state.commentsList.map((comment)=>{
-        if(comment.id===action.payload.id){
-          const isFavourite =!comment.isFavourite;
-          return {...comment, isFavourite}
+    case SWITCH_IS_FAVOURITE: {
+      const newCommentsList = state.commentsList.map((comment) => {
+          if (comment.id === action.payload.id) {
+            const isFavourite = !comment.isFavourite;
+            return {...comment, isFavourite}
+          }
+          return comment
         }
-
-        return {...comment}
-      }
       )
-      console.log("switcheddddd id:", action.payload.id)
       return {
         ...state,
         commentsList: newCommentsList
       };
     }
+    case ADD_COMMENT: {
+      const maxIdValue = Math.max.apply(Math, state.commentsList.map(function (o) {
+        return o.id;
+      }))
+      const newComment = action.payload.comment;
+      newComment.id = maxIdValue+1
+      return {
+        ...state,
+        commentsList: [{...newComment}, ...state.commentsList ]
+      };
+    }
+
+
     default:
       return state;
   }
@@ -61,11 +73,11 @@ const commentsReducer = (state = initialState, action) => {
 export const selectAllComments = state => state.commentsList;
 
 export const selectFavouriteComments = createSelector(
-  [ selectAllComments ],
+  [selectAllComments],
   allComments => {
-  return allComments.filter((item)=>{
-    return item.isFavourite
+    return allComments.filter((item) => {
+      return item.isFavourite
+    });
   });
-});
 
 export default commentsReducer;

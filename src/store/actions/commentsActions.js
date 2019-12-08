@@ -4,7 +4,8 @@ import {
   REQUEST_GET_COMMENTS,
   RESPONSE_GET_COMMENTS,
   ERROR_GET_COMMENTS,
-  SWITCH_IS_FAVOURITE
+  SWITCH_IS_FAVOURITE,
+  ADD_COMMENT
 } from './actionTypes';
 
 export const getCommentsFromApi = () => (dispatch => {
@@ -39,4 +40,9 @@ const errorGetCommentsFromApi = (error) => ({
 export const switchIsFavouriteComment = (id) => ({
   type: SWITCH_IS_FAVOURITE,
   payload: {id}
+});
+
+export const addComment = (comment) => ({
+  type: ADD_COMMENT,
+  payload: {comment}
 });
