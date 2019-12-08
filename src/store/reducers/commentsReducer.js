@@ -4,6 +4,7 @@ import {
   ERROR_GET_COMMENTS,
   SWITCH_IS_FAVOURITE
 } from '../actions/actionTypes.js';
+import { createSelector } from 'reselect'
 
 const initialState = {
   loadingComments: false,
@@ -59,11 +60,12 @@ const commentsReducer = (state = initialState, action) => {
 
 export const selectAllComments = state => state.commentsList;
 
-export const selectFavouriteComments = state => {
-  //console.log("selectFavouriteComments")
-  return state.commentsList.filter((item)=>{
+export const selectFavouriteComments = createSelector(
+  [ selectAllComments ],
+  allComments => {
+  return allComments.filter((item)=>{
     return item.isFavourite
   });
-}
+});
 
 export default commentsReducer;
