@@ -11,6 +11,7 @@ import {
   CardActions,
 } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import {switchIsFavouriteComment} from './../../store/actions';
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -18,8 +19,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export const Comment = ({name, email, body, id}) => {
-  //const dispatch = useDispatch();
+export const Comment = ({name, email, body, id, isFavourite}) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
   return (
     <>
@@ -39,7 +40,11 @@ export const Comment = ({name, email, body, id}) => {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton
+          aria-label="add to favorites"
+          onClick={()=>dispatch(switchIsFavouriteComment(id))}
+          color={isFavourite?'secondary':'default'}
+        >
           <FavoriteIcon />
         </IconButton>
       </CardActions>

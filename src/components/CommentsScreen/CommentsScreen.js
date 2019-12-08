@@ -5,15 +5,16 @@ import {selectAllComments} from './../../store/reducers/commentsReducer';
 import {CommentsList} from './../CommentsList/CommentsList'
 
 const CommentsScreen = () => {
-  const dispatch = useDispatch();
-  const commentsList = useSelector(selectAllComments);
-  console.log("commentsList", commentsList)
   useEffect(() => {
       dispatch(getCommentsFromApi())
       //console.log('mounted')
     }
     //eslint-disable-next-line
     , []);
+  const dispatch = useDispatch();
+  const commentsList = useSelector(selectAllComments);
+  console.log("commentsList", commentsList)
+
   return (
     <div className="commentsScreen">
       <CommentsList commentsList={commentsList}/>

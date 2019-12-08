@@ -6,8 +6,8 @@ export const CommentsList = ({commentsList}) => {
   const comments = commentsList.map(item => {
     console.log(item);
     return(
-      <Grid item xs={12} sm={6} md={4}>
-        <Comment {...item} key={item.id}/>
+      <Grid item xs={12} sm={6} md={4} key={item.id}>
+        <Comment {...item} />
       </Grid>
     )
   })
