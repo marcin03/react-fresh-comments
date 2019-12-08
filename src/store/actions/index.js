@@ -1,1 +1,1 @@
-export { getCommentsFromApi } from './commentsActions';
+export { getCommentsFromApi, switchIsFavouriteComment } from './commentsActions';

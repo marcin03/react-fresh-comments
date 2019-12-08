@@ -1,26 +1,23 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {getCommentsFromApi} from './../../store/actions';
-import {selectAllComments} from './../../store/reducers/commentsReducer';
-import {CommentsList} from './../CommentsList/CommentsList'
+import {getCommentsFromApi} from '../../store/actions/index';
+import {selectAllComments} from '../../store/reducers/commentsReducer';
+import {CommentsList} from '../../components/CommentsList/CommentsList'
 
-const CommentsScreen = () => {
-  const dispatch = useDispatch();
+export const CommentsScreen = () => {
   const commentsList = useSelector(selectAllComments);
-  console.log("commentsList", commentsList)
   useEffect(() => {
+    if(commentsList.length==0){
       dispatch(getCommentsFromApi())
-      //console.log('mounted')
+    }
     }
     //eslint-disable-next-line
     , []);
+  const dispatch = useDispatch();
+
   return (
     <div className="commentsScreen">
       <CommentsList commentsList={commentsList}/>
     </div>
   );
 };
-
-export default CommentsScreen;
-
-
