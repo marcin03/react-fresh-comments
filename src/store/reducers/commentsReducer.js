@@ -59,4 +59,11 @@ const commentsReducer = (state = initialState, action) => {
 
 export const selectAllComments = state => state.commentsList;
 
+export const selectFavouriteComments = state => {
+  //console.log("selectFavouriteComments")
+  return state.commentsList.filter((item)=>{
+    return item.isFavourite
+  });
+}
+
 export default commentsReducer;
