@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/react-fresh-comments/static/css/main.4f06390f.chunk.css",
+    "main.js": "/react-fresh-comments/static/js/main.9f7878ba.chunk.js",
+    "main.js.map": "/react-fresh-comments/static/js/main.9f7878ba.chunk.js.map",
+    "runtime-main.js": "/react-fresh-comments/static/js/runtime-main.15f8bd86.js",
+    "runtime-main.js.map": "/react-fresh-comments/static/js/runtime-main.15f8bd86.js.map",
+    "static/js/2.8f6cea29.chunk.js": "/react-fresh-comments/static/js/2.8f6cea29.chunk.js",
+    "static/js/2.8f6cea29.chunk.js.map": "/react-fresh-comments/static/js/2.8f6cea29.chunk.js.map",
+    "index.html": "/react-fresh-comments/index.html",
+    "precache-manifest.fd556371da3385b36720427b8d195595.js": "/react-fresh-comments/precache-manifest.fd556371da3385b36720427b8d195595.js",
+    "service-worker.js": "/react-fresh-comments/service-worker.js",
+    "static/css/main.4f06390f.chunk.css.map": "/react-fresh-comments/static/css/main.4f06390f.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.15f8bd86.js",
+    "static/js/2.8f6cea29.chunk.js",
+    "static/css/main.4f06390f.chunk.css",
+    "static/js/main.9f7878ba.chunk.js"
+  ]
+}
